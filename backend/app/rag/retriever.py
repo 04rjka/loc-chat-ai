@@ -4,23 +4,8 @@ class Retriever:
         self.vectorstore = vectorstore
         self.k = k
 
-    def retrieve(self, question,user_id:int,document_id:Optional[int]):
-
+    def retrieve(self, question: str, document_id: Optional[int] = None):
+        search_kwargs = {"k": self.k}
         if document_id:
-            where_filter = {
-                            "$and":[
-                                {"user_id":user_id},
-                                {"document_id":document_id}
-                            ]
-                        }
-        else:
-            where_filter = {"user_id":user_id}
-            
-
-        retriever = self.vectorstore.as_retriever(
-            search_kwargs={
-                "k":self.k,
-                "filter": where_filter
-            }
-        )
-        return retriever.invoke(question)
+            search_kwargs["filter"] = {"document_id": document_id}
+        return self.vectorstore.as_retriever(search_kwargs=search_kwargs).invoke(question)

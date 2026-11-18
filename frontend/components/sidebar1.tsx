@@ -38,7 +38,6 @@ import {
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAuth } from "@/context/AuthContext";
 import { ThemeToggle } from "@/components/theme-toggle"
 import { useSidebar } from "@/components/ui/sidebar"
 
@@ -66,8 +65,8 @@ type SidebarData = {
 
 const sidebarData: SidebarData = {
   logo: {
-    alt: "PaperChat AI",
-    title: "PaperChat AI",
+    alt: "Loc Chat AI",
+    title: "Loc Chat AI",
     description: "Chat with your documents",
   },
   navGroups: [
@@ -111,7 +110,6 @@ const SidebarLogo = ({ logo }: { logo: SidebarData["logo"] }) => {
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   const pathname = usePathname();
-  const { logout } = useAuth();
   const { setOpenMobile } = useSidebar();
   return (
     <Sidebar {...props}>
@@ -148,15 +146,7 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
                 <ThemeToggle />
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton
-                  onClick={() => {
-                    setOpenMobile(false)
-                    logout()
-                  }}
-                >
-                  <LogOut className="size-4" />
-                  Logout
-                </SidebarMenuButton>
+                
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
