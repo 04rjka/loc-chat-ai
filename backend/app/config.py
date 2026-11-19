@@ -20,11 +20,6 @@ class Settings(BaseSettings):
     upload_path: str = str(STORAGE_DIR / "uploads")
     database_url: str = f"sqlite:///{STORAGE_DIR / 'app.db'}"
 
-    #Auth
-    secret_key: str
-    access_token_expire_minutes: int = 30
-    refresh_token_expire_days: int = 7
-
     # Server
     cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000"
 
