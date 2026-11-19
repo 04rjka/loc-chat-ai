@@ -173,7 +173,7 @@ function HeaderBar() {
       <SidebarTrigger className="-ml-1" />
       {(isMobile || state === "collapsed") && (
         <span className="text-sm font-medium text-muted-foreground">
-          PaperChat AI
+          Loc Chat AI
         </span>
       )}
     </header>
