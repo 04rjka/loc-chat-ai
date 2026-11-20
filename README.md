@@ -109,3 +109,7 @@ frontend/
 rm -rf backend/storage
 uv run python backend/init_db.py
 ```
+
+## License
+
+MIT
